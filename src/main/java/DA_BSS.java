@@ -114,7 +114,7 @@ public class DA_BSS extends UnicastRemoteObject implements DA_BSS_RMI, Runnable 
      * @param m Message to be delivered.
      */
     private void deliver(Message m) {
-        System.out.println("Delivering message: " + m.message);
+        System.out.println("[" + processNumber + "] message delivered: " + m.message);
         V[m.processSenderId] = m.V[m.processSenderId];
         B.remove(m);
     }
