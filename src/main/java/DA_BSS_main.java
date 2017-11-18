@@ -10,7 +10,7 @@ import java.rmi.RemoteException;
  * Main class for starting DA.
  */
 public class DA_BSS_main {
-    public static void main(String[] args) {
+    public static void main(String... args) {
         OptionParser parser = new OptionParser();
 
         parser.accepts("p", "Process number")
@@ -20,7 +20,7 @@ public class DA_BSS_main {
 
         OptionSet options = parser.parse(args);
 
-        if (!options.has("p") && !options.has("t")) {
+        if (!options.has("p") || !options.has("t")) {
             return;
         }
 

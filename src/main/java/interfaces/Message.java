@@ -7,14 +7,14 @@ import java.io.Serializable;
  * Implementation for Message that gets passed along between processes.
  */
 public class Message implements Serializable {
-    public Message(String message, int[] v, int processSenderId)  {
+    public Message(String message, int[] vectorClock, int processSenderId)  {
         this.message = message;
-        V = v;
+        this.vectorClock = vectorClock;
         this.processSenderId = processSenderId;
     }
 
     private static final long serialVersionUID = 20120731125400L;
     public String message;
-    public int[] V;
+    public int[] vectorClock;
     public int processSenderId;
 }
