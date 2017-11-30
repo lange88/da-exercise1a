@@ -26,22 +26,22 @@ public class DA_BSS_Test {
 
     @Test
     public void multiProcessMessageFromPast() {
-        int[] pastVectorClock = {1, 1};
-        int[] futureVectorClock = {2, 1};
+        int[] pastVectorClock = {1, 1, 2, 2};
+        int[] futureVectorClock = {2, 1, 2, 3};
 
         Message messageFromPast = new Message("", pastVectorClock, 0);
 
-        Assert.assertTrue(DA_BSS.isDeliverable(2, messageFromPast, futureVectorClock));
+        Assert.assertTrue(DA_BSS.isDeliverable(4, messageFromPast, futureVectorClock));
     }
 
     @Test
     public void multiProcessMessageFromFuture() {
-        int[] pastVectorClock = {1, 1};
-        int[] futureVectorClock = {2, 1};
+        int[] pastVectorClock = {1, 1, 2, 2};
+        int[] futureVectorClock = {2, 1, 2, 3};
 
         Message messageFromFuture = new Message("", futureVectorClock, 0);
 
-        Assert.assertFalse(DA_BSS.isDeliverable(2, messageFromFuture, pastVectorClock));
+        Assert.assertFalse(DA_BSS.isDeliverable(4, messageFromFuture, pastVectorClock));
     }
 
     @Test
