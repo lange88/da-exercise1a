@@ -3,6 +3,7 @@ import joptsimple.OptionSet;
 
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
+import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 
 /**
@@ -55,6 +56,11 @@ public class DA_BSS_main {
 
         if (da == null) {
             return;
+        }
+
+        // Create and install a security manager
+        if (System.getSecurityManager() == null) {
+            System.setSecurityManager(new RMISecurityManager());
         }
 
         // finally start the worker thread of the process
