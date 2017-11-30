@@ -57,7 +57,14 @@ public class DA_BSS extends UnicastRemoteObject implements DA_BSS_RMI, Runnable 
 
         // send to all processes
         for (int index = 0; index < totalProcesses; index++) {
-            String name = "rmi://145.94.212.225/DA_BSS" + index;
+            String name = "rmi://";
+            if (index == processNumber) {
+                name += "localhost/DA_BSS" + index;
+            }
+            else {
+                name += "145.94.153.54/DA_BSS" + index;
+            }
+
             try {
                 Message m = new Message(message, vectorClock, processNumber);
                 DA_BSS_RMI o = (DA_BSS_RMI) java.rmi.Naming.lookup(name);
